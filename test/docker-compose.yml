@@ -1,0 +1,23 @@
+version: "2"
+services:
+  
+  mautic:
+    restart: unless-stopped
+    image: danilocruz/mautic:v3.2.2
+    container_name: mautic
+    ports:
+      - "10443:443"
+      - "8881:80"
+    environment:
+      #MAUTIC_DB_HOST: 127.0.0.1
+      #MAUTIC_DB_USER: mautic
+      #MAUTIC_DB_PASSWORD: mautic
+      #APACHE_SSL: "false"
+      #APACHE_FORCE_HTTPS: "false"
+      #APACHE_SSL_CRT: "cert.crt"
+      #APACHE_SSL_KEY: "cert.key"
+    volumes:
+      - ./web:/var/www/html
+      - ./mysql:/var/lib/mysql
+      - ./certs:/etc/ssl/private
+      
